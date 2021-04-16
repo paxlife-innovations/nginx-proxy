@@ -9,7 +9,7 @@ RUN apt-get update \
 
 
 # Configure Nginx
-COPY ./system-nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ./nginx.conf /etc/nginx/nginx.conf
 RUN rm /etc/nginx/conf.d/*.conf
 
 # Install Forego
@@ -22,9 +22,9 @@ RUN wget https://github.com/jwilder/docker-gen/releases/download/$DOCKER_GEN_VER
  && tar -C /usr/local/bin -xvzf docker-gen-linux-amd64-$DOCKER_GEN_VERSION.tar.gz \
  && rm /docker-gen-linux-amd64-$DOCKER_GEN_VERSION.tar.gz
 
-COPY ./system-nginx/network_internal.conf /etc/nginx/
+COPY ./network_internal.conf /etc/nginx/
 
-COPY ./system-nginx/* /app/
+COPY . /app/
 WORKDIR /app/
 
 ENV DOCKER_HOST unix:///tmp/docker.sock

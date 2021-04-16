@@ -17,10 +17,6 @@ Prepare the nginx-proxy test image
 
     docker build -t nginxproxy/nginx-proxy:test ..
 
-or if you want to test the alpine flavor:
-
-    docker build -t nginxproxy/nginx-proxy:test -f Dockerfile.alpine ..
-
 make sure to tag that test image exactly `nginxproxy/nginx-proxy:test` or the test suite won't work.
 
 
@@ -102,6 +98,6 @@ Furthermore, the nginxproxy methods accept an additional keyword parameter: `ipv
 When you ran the `requirements/build.sh` script earlier, you built a [`web`](requirements/README.md) docker image which is convenient for running a small web server in a container. This image can produce containers that listens on multiple ports at the same time.
 
 
-### Testing TLS
+### The web https docker image
 
-If you need to create server certificates, use the [`certs/create_server_certificate.sh`](certs/) script. Pytest will be able to validate any certificate issued from this script.
+When you ran the `requirements/build.sh` script earlier, you built a [`web-https`](requirements/README.md) docker image which is convenient for running a small web server in a container. This image can produce container that return simple message via https.

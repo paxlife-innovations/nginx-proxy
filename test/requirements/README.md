@@ -45,6 +45,24 @@ answer from port 80
 ```
 
 
+## web-https
+
+This container will run one webservers, serving content via https.
+
+The container exposes port 443.
+
+The webserver answers on paths:
+
+- `/`
+
+```
+$ docker run -d -p 443:443 web-https
+$ curl -k https://127.0.0.1:443/
+I'm c80c559d043a
+
+```
+
+
 ## nginx-proxy-tester
 
 This is an optional requirement which is usefull if you cannot (or don't want to) install pytest and its requirements on your computer. In this case, you can use the `nginx-proxy-tester` docker image to run the test suite from a Docker container.

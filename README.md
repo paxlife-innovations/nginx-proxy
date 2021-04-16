@@ -1,6 +1,6 @@
-# System nginx
+# Nginx proxy
 
-The system-nginx component acts as a `router` to route request to the correct container depend on domain name in the request. The system nginx is `transparent` when looking from client side. It simply forwards the request from client to the specified container.
+The nginx proxy component acts as a `router` to route request to the correct container depend on domain name in the request. The system nginx is `transparent` when looking from client side. It simply forwards the request from client to the specified container.
 The code here is customized from repository https://github.com/nginx-proxy/nginx-proxy/
 
 ## Usage
@@ -11,7 +11,7 @@ To register domain name with system nginx (all requests to some specific domain 
 
 ## Test
 
-To test the functionalities of system-nginx, please run:
+To test the functionalities of nginx proxy please run:
 ```sh
 make test
 ```

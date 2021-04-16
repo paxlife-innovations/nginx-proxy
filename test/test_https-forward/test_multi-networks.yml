@@ -14,21 +14,25 @@ services:
       - net2
 
   web1:
-    image: web
+    image: web-https
+    container_name: web1
     expose:
-      - "81"
+      - "443"
     environment:
-      WEB_PORTS: 81
+      VIRTUAL_PORT: 443
       VIRTUAL_HOST: web1.nginx-proxy.local
+      VIRTUAL_PROTO: https
     networks:
       - net1
 
   web2:
-    image: web
+    image: web-https
+    container_name: web2
     expose:
-      - "82"
+      - "443"
     environment:
-      WEB_PORTS: 82
+      VIRTUAL_PORT: 443
       VIRTUAL_HOST: web2.nginx-proxy.local
+      VIRTUAL_PROTO: https
     networks:
       - net2

@@ -1,16 +1,10 @@
-.SILENT :
-.PHONY : test-debian test-alpine test
+test: ## Run test
+	./test/requirements/build.sh
+	./test/pytest.sh
 
+.DEFAULT_GOAL := help
 
-update-dependencies:
-	test/requirements/build.sh
-
-test-debian: update-dependencies
-	docker build -t nginxproxy/nginx-proxy:test .
-	test/pytest.sh
-
-test-alpine: update-dependencies
-	docker build -f Dockerfile.alpine -t nginxproxy/nginx-proxy:test .
-	test/pytest.sh
-
-test: test-debian test-alpine
+# kudos to: https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
+.PHONY : help test
+help :
+	@grep -E '^[a-zA-Z_-]+ *:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = " *:.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'

@@ -254,9 +254,9 @@ def get_nginx_conf_from_container(container):
     """
     import tarfile
     from cStringIO import StringIO
-    strm, stat = container.get_archive('/etc/nginx/conf.d/default.conf')
+    strm, stat = container.get_archive('/etc/nginx/conf.d/https.conf')
     with tarfile.open(fileobj=StringIO(strm.read())) as tf:
-        conffile = tf.extractfile('default.conf')
+        conffile = tf.extractfile('https.conf')
         return conffile.read()
 
 

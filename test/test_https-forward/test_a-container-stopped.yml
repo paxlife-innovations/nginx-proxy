@@ -1,0 +1,16 @@
+web1:
+  image: web-https
+  expose:
+    - "443"
+  entrypoint: ["echo", "container stopped"]
+  container_name: web1
+  environment:
+    VIRTUAL_PORT: 443
+    VIRTUAL_HOST: web1.nginx-proxy.tld
+    VIRTUAL_PROTO: https
+
+sut:
+  image: nginxproxy/nginx-proxy:test
+  container_name: nginxproxy
+  volumes:
+    - /var/run/docker.sock:/tmp/docker.sock:ro

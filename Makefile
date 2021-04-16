@@ -1,4 +1,5 @@
 test: ## Run test
+	docker build -t nginxproxy/nginx-proxy:test .
 	./test/requirements/build.sh
 	./test/pytest.sh
 
